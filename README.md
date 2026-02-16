@@ -16,8 +16,8 @@
       - Select the branch defined in the first step (for instance, `my-reports`)
       - [OPTIONAL] Adjust the commit message that will appear later in the created pull request<br>(see the [What to do when reports are created](#next-step) section below).
       - Click the green __Run workflow__ button
-        
-        <img width="800" src="https://github.com/user-attachments/assets/863a98cd-ecff-43c5-8ed9-b1458becf48c" />
+     
+        <img width="800" src="https://github.com/user-attachments/assets/d787ddc6-db2a-47c0-ab98-82bcb0051bb4" />
 
 ## How to create qualification reports
 
