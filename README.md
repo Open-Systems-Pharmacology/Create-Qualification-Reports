@@ -39,7 +39,7 @@
     * [OPTIONAL] Adjust the commit message that will appear later in the created pull request<br>(see the [What to do when reports are created](#next-step) section below).
     * Click the green __Run workflow__ button 
 
-## What to do when reports are created
+## What to do when reports are created<a id="next-step"></a>
 
 When qualification reports are created, pull requests (PRs) are created (one PR for each qualification report) toward the branch defined in the first step (for instance, `my-reports`).<br>
 These pull requests allow users to review report updates and adopt the new version.
