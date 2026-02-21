@@ -5,11 +5,15 @@ runs:
   using: composite
   steps:
 
-    - name: Configure git, calculate hash of tools.csv and set R library path
+    - name: Set R library path
+      run: |
+        echo "R_LIBS_USER=D:\a\_temp\Library" >> $GITHUB_ENV
+      shell: bash
+
+    - name: Configure git, set cache key
       run: |
         git config --global core.longpaths true
-        echo "R_LIBS_USER=${{ github.workspace }}/RLibrary" >> $GITHUB_ENV
-        echo "TOOLS_CSV_HASH=${{ hashFiles('tools.csv') }}" >> $GITHUB_ENV
+        echo "CACHE_KEY=ospsuite-${{ env.R_LIBS_USER }}-${{ hashFiles('tools.csv') }}" >> $GITHUB_ENV
       shell: bash
 
     # Restore previously prepared environment if tools.csv was unchanged
@@ -17,9 +21,9 @@ runs:
       id: cache-setup
       uses: actions/cache/restore@v5
       with:
-        key: ospsuite-${{ env.TOOLS_CSV_HASH }}
+        key: ${{ env.CACHE_KEY }}
         path: |
-          ${{ github.workspace }}/RLibrary
+          ${{ env.R_LIBS_USER }}
           ${{ github.workspace }}/PK-Sim
           ${{ github.workspace }}/QualificationRunner
 
@@ -66,8 +70,8 @@ runs:
       if: steps.cache-setup.outputs.cache-hit != 'true'
       uses: actions/cache/save@v5
       with:
-        key: ospsuite-${{ env.TOOLS_CSV_HASH }}
+        key: ${{ env.CACHE_KEY }}
         path: |
-          ${{ github.workspace }}/RLibrary
+          ${{ env.R_LIBS_USER }}
           ${{ github.workspace }}/PK-Sim
           ${{ github.workspace }}/QualificationRunner
