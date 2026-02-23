@@ -34,11 +34,14 @@
   * Download and unzip an artifact.
   * Analyze the log files for errors. Log files can be found e.g. here:
     * **.../re_input/temp/PROJECT_NAME/log.txt**
+    
     <img width="300" src="https://github.com/user-attachments/assets/9d3eee4c-d267-4c7f-bd45-3507bcfd35c6" />
+
     * **.../re_output/log-XXX.txt**
+    
     <img width="300" src="https://github.com/user-attachments/assets/ccd37155-403e-4db3-aa02-f07611fb1597" />
 
-<img width="1482" height="901" alt="grafik" src="https://github.com/user-attachments/assets/21128c32-d27f-4713-bceb-cfca9b51c288" />
+  <img width="1482" height="901" alt="grafik" src="https://github.com/user-attachments/assets/21128c32-d27f-4713-bceb-cfca9b51c288" />
 
 ---
 
@@ -56,7 +59,3 @@
   <img width="1535" height="847" alt="grafik" src="https://github.com/user-attachments/assets/5e58d609-2ac8-48ec-8cf1-b982b060737a" />
 
 --- 
-* If some of the matrix jobs in the last step fail: 
-  
-* a
-* a
