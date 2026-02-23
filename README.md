@@ -56,6 +56,8 @@ The header includes the following fields:
 
 - __Execute__: If `TRUE`, run the qualification. If `FALSE`, skip the qualification.
 - __Repository name__: Name of the GitHub OSP repository from which to get the model, e.g. <br>`7E3-Model` for [https://github.com/Open-Systems-Pharmacology/7E3-Model](https://github.com/Open-Systems-Pharmacology/7E3-Model)
+> [!TIP]
+> If the model repository does not come from _Open-Systems-Pharmacology_, enter it like this:<br> `../<GITHUB_ACCOUNT_NAME>/<REPOSITORY_NAME>` (e.g. `../Yuri05/7E3-Model`)
 - __Released version__: Tag version of the model repository release, e.g. `1.0`. <br>Alternatively, use a **branch** name of the model repository (e.g. `main`).
 - __Snapshot name__: Name of the snapshot (`.json`) file, e.g. <br>`7E3` in [https://github.com/Open-Systems-Pharmacology/7E3-Model/7E3.json](https://github.com/Open-Systems-Pharmacology/7E3-Model/7E3.json)
 - __Folder name__: Name of the target folder where the model evaluation report (and the project file(s)) should be created.
@@ -73,6 +75,8 @@ The header includes the following fields:
 
 - __Execute__: If `TRUE`, run the qualification. If `FALSE`, skip the qualification.
 - __Repository name__: Name of GitHub OSP repository from which to get the qualification plan, e.g. `Qualification-CKD` for <br>[https://github.com/Open-Systems-Pharmacology/Qualification-CKD](https://github.com/Open-Systems-Pharmacology/Qualification-CKD)
+> [!TIP]
+> If the qualification plan repository does not come from _Open-Systems-Pharmacology_, enter it like this:<br> `../<GITHUB_ACCOUNT_NAME>/<REPOSITORY_NAME>` (e.g. `../Yuri05/Qualification-CKD`)
 - __Released version__: Tag version of the qualification plan repository release, e.g. `1.0`. <br>Alternatively, use a **branch** name of the qualification plan repository (e.g. `main`).
 - __Workflow name__: Path of the workflow R script that creates the function to run the qualification if not default.
 > [!TIP]
