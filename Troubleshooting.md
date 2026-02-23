@@ -33,15 +33,20 @@
 * If some of the matrix jobs in the last step fail: check if workflow created _artifacts_. If so:
   * Download and unzip an artifact.
   * Analyze the log files for errors. Log files can be found e.g. here:
-    * **.../re_input/temp/PROJECT_NAME/log.txt**
+    * **.../re_input/temp/PROJECT_NAME/log.txt** <br>
     
     <img width="300" src="https://github.com/user-attachments/assets/9d3eee4c-d267-4c7f-bd45-3507bcfd35c6" />
 
-    * **.../re_output/log-XXX.txt**
+    * **.../re_output/log-XXX.txt** <br>
     
     <img width="300" src="https://github.com/user-attachments/assets/ccd37155-403e-4db3-aa02-f07611fb1597" />
 
   <img width="1482" height="901" alt="grafik" src="https://github.com/user-attachments/assets/21128c32-d27f-4713-bceb-cfca9b51c288" />
+
+  In addition, click on every failed job and analyze the log error message shown on the right. <br>
+  If you have alicense of GitHub Copilot, you can also click on the **Explain Error** button and get a further error explanation (and possibly some solutions) from Copilot.
+  
+  <img src="https://github.com/user-attachments/assets/a1d2dcf9-bced-424c-bfdf-6144c1ac0f94" />
 
 ---
 
@@ -59,3 +64,13 @@
   <img width="1535" height="847" alt="grafik" src="https://github.com/user-attachments/assets/5e58d609-2ac8-48ec-8cf1-b982b060737a" />
 
 --- 
+
+* If none of the above helps, try deleting of the _GitHub Actions cache_ (see [Deleting cache entries](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manage-caches#deleting-cache-entries) for details).
+  Then rerun the workflow.
+
+--- 
+
+* If you still cannot find the solution: open an issue [here](https://github.com/Open-Systems-Pharmacology/Create-Qualification-Reports/issues)
+  * Include the link to your failed workflow run into the issue description.
+    
+    <img width="800" src="https://github.com/user-attachments/assets/42268a48-faa5-4f79-8a69-1f619352207e" />
