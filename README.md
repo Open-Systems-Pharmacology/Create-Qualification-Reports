@@ -34,7 +34,7 @@
    * Once you are finished, push the new branch to your fork and verify that the check [Validate qualifications.csv](../../actions/workflows/check-qualifications.yml) was successful!
 1. [OPTIONAL] Adjust the OSP environment and tools by updating [`tools.csv`](tools.csv)<br>(see the [Tools](#tools) section below for details)
     * In case of modifications: verify that the check [Validate tools.csv](../../actions/workflows/check-tools.yml) was successful!
-1. Go to the GitHub Action: [Qualification Reports](../../actions/workflows/create-qualification_reports.yml)
+1. Go to the GitHub Action: [Create qualification reports](../../actions/workflows/create-qualification_reports.yml)
     * Click the __Run workflow__ button 
     * Select the branch defined in the first step (for instance, `my-reports`)
     * [OPTIONAL] Adjust the commit message that will appear later in the created pull request<br>(see the [What to do when reports are created](#next-step) section below).
@@ -47,6 +47,7 @@ These pull requests allow users to review report updates and adopt the new versi
 For each created PR:
 * Close and reopen the PR: this will trigger the automated checks (e.g. links and cross-references) of the created report.
 * If you have a GitHub Copilot license: assign Copilot as a PR reviewer (Copilot will then check the report as well)
+* If any step fails, follow the troubleshooting guide in [Troubleshooting.md](Troubleshooting.md).
 
 ## Models
 
