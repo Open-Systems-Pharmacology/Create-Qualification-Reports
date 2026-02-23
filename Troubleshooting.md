@@ -30,7 +30,10 @@
    * If **Validate qualifications.csv** workflow ends with errors: investigate the errors in the same manner as described above. Most likely, **qualifications.csv** needs to be adjusted.
 
 ---
-* If some of the matrix jobs in the last step fail: check if workflow created _artifacts_. If so:
+* If some of the matrix jobs in the last step fail: check if workflow created _artifacts_. 
+
+  <img width="1482" height="901" alt="grafik" src="https://github.com/user-attachments/assets/21128c32-d27f-4713-bceb-cfca9b51c288" />
+  
   * Download and unzip an artifact.
   * Analyze the log files for errors. Log files can be found e.g. here:
     * **.../re_input/temp/PROJECT_NAME/log.txt** <br>
@@ -41,7 +44,6 @@
     
     <img width="300" src="https://github.com/user-attachments/assets/ccd37155-403e-4db3-aa02-f07611fb1597" />
 
-  <img width="1482" height="901" alt="grafik" src="https://github.com/user-attachments/assets/21128c32-d27f-4713-bceb-cfca9b51c288" />
 
   In addition, click on every failed job and analyze the log error message shown on the right. <br>
   If you have alicense of GitHub Copilot, you can also click on the **Explain Error** button and get a further error explanation (and possibly some solutions) from Copilot.
