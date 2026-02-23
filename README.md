@@ -10,6 +10,7 @@
 
 ## Notes
 * Do not use Excel to edit and save CSV files. Use a text editor only.
+* Before saving a CSV file, make sure it does not contain any empty lines!
 
 ## How to create model evaluation reports
 
