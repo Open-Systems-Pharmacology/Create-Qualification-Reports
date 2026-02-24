@@ -10,6 +10,7 @@
 
 ## Notes
 * Do not use Excel to edit and save CSV files. Use a text editor only.
+* Before saving a CSV file, make sure it does not contain any empty lines!
 
 ## How to create model evaluation reports
 
@@ -33,7 +34,7 @@
    * Once you are finished, push the new branch to your fork and verify that the check [Validate qualifications.csv](../../actions/workflows/check-qualifications.yml) was successful!
 1. [OPTIONAL] Adjust the OSP environment and tools by updating [`tools.csv`](tools.csv)<br>(see the [Tools](#tools) section below for details)
     * In case of modifications: verify that the check [Validate tools.csv](../../actions/workflows/check-tools.yml) was successful!
-1. Go to the GitHub Action: [Qualification Reports](../../actions/workflows/create-qualification_reports.yml)
+1. Go to the GitHub Action: [Create qualification reports](../../actions/workflows/create-qualification_reports.yml)
     * Click the __Run workflow__ button 
     * Select the branch defined in the first step (for instance, `my-reports`)
     * [OPTIONAL] Adjust the commit message that will appear later in the created pull request<br>(see the [What to do when reports are created](#next-step) section below).
@@ -46,6 +47,7 @@ These pull requests allow users to review report updates and adopt the new versi
 For each created PR:
 * Close and reopen the PR: this will trigger the automated checks (e.g. links and cross-references) of the created report.
 * If you have a GitHub Copilot license: assign Copilot as a PR reviewer (Copilot will then check the report as well)
+* If any step fails, follow the troubleshooting guide in [Troubleshooting.md](Troubleshooting.md).
 
 ## Models
 
@@ -54,6 +56,8 @@ The header includes the following fields:
 
 - __Execute__: If `TRUE`, run the qualification. If `FALSE`, skip the qualification.
 - __Repository name__: Name of the GitHub OSP repository from which to get the model, e.g. <br>`7E3-Model` for [https://github.com/Open-Systems-Pharmacology/7E3-Model](https://github.com/Open-Systems-Pharmacology/7E3-Model)
+> [!TIP]
+> If the model repository does not come from _Open-Systems-Pharmacology_, enter it like this:<br> `../<GITHUB_ACCOUNT_NAME>/<REPOSITORY_NAME>` (e.g. `../Yuri05/7E3-Model`)
 - __Released version__: Tag version of the model repository release, e.g. `1.0`. <br>Alternatively, use a **branch** name of the model repository (e.g. `main`).
 - __Snapshot name__: Name of the snapshot (`.json`) file, e.g. <br>`7E3` in [https://github.com/Open-Systems-Pharmacology/7E3-Model/7E3.json](https://github.com/Open-Systems-Pharmacology/7E3-Model/7E3.json)
 - __Folder name__: Name of the target folder where the model evaluation report (and the project file(s)) should be created.
@@ -71,6 +75,8 @@ The header includes the following fields:
 
 - __Execute__: If `TRUE`, run the qualification. If `FALSE`, skip the qualification.
 - __Repository name__: Name of GitHub OSP repository from which to get the qualification plan, e.g. `Qualification-CKD` for <br>[https://github.com/Open-Systems-Pharmacology/Qualification-CKD](https://github.com/Open-Systems-Pharmacology/Qualification-CKD)
+> [!TIP]
+> If the qualification plan repository does not come from _Open-Systems-Pharmacology_, enter it like this:<br> `../<GITHUB_ACCOUNT_NAME>/<REPOSITORY_NAME>` (e.g. `../Yuri05/Qualification-CKD`)
 - __Released version__: Tag version of the qualification plan repository release, e.g. `1.0`. <br>Alternatively, use a **branch** name of the qualification plan repository (e.g. `main`).
 - __Workflow name__: Path of the workflow R script that creates the function to run the qualification if not default.
 > [!TIP]

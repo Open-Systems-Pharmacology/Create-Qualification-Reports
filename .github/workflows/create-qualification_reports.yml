@@ -119,10 +119,20 @@ jobs:
         unlink("${{ env.WORKING_DIR }}", recursive = TRUE)
       shell: Rscript {0}
 
+    - name: Sanitize repository name for branch
+      id: sanitize
+      shell: bash
+      env:
+        REPO_NAME: ${{ matrix['Repository name'] }}
+      run: |
+        # Remove characters that can make a branch name invalid
+        sanitized="$(printf '%s' "$REPO_NAME" | tr -d './\\')"
+        echo "repo_name=$sanitized" >> "$GITHUB_OUTPUT"
+    
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v8
       with:
-        branch: ${{ matrix['Repository name'] }}-${{ github.run_number }}
+        branch: ${{ steps.sanitize.outputs.repo_name }}-${{ github.run_number }}
         base: ${{ github.ref_name }}
         commit-message: ${{ inputs.commit-message }}
         add-paths: |
