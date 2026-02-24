@@ -123,9 +123,11 @@ jobs:
     - name: Sanitize repository name for branch
       id: sanitize
       shell: bash
+      env:
+        REPO_NAME: ${{ matrix['Repository name'] }}
       run: |
         # Remove characters that can make a branch name invalid
-        sanitized="$(printf '%s' "${{ matrix['Repository name'] }}" | tr -d './\\')"
+        sanitized="$(printf '%s' "$REPO_NAME" | tr -d './\\')"
         echo "repo_name=$sanitized" >> "$GITHUB_OUTPUT"
     
     - name: Create Pull Request
