@@ -14,7 +14,7 @@
 
 ## How to create model evaluation reports
 
-1. Create a new branch (e.g. `my-reports`) from the `main` branch of your fork.
+1. Create a new branch (e.g. `my-reports`) from the `main` branch of your fork (see [Creating a branch](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-and-deleting-branches-within-your-repository#creating-a-branch)).
 1. Define the models by updating [`models.csv`](models.csv) (see the [Models](#models) section below for details)
    * Once you are finished, push the new branch to your fork and verify that the check [Validate models.csv](../../actions/workflows/check-models.yml) was successful!
 1. [OPTIONAL] Adjust the OSP environment and tools by updating [`tools.csv`](tools.csv)<br>(see the [Tools](#tools) section below for details)
