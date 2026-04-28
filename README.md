@@ -6,6 +6,10 @@
 
   <img width="600" alt="image" src="https://github.com/user-attachments/assets/e120663e-0916-4c79-b0eb-b16034601b9c" />
 
+* In the forked repository settings (category **Actions**▶️**General**) activate the option `Allow GitHub Actions to create and approve pull requests` (s. [Workflow permissions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#preventing-github-actions-from-creating-or-approving-pull-requests) in the GitHub documentation for details).
+
+  <img width="600" src="https://github.com/user-attachments/assets/b9977f37-e9b4-4a93-8dc2-24f592e2d973" />
+
 * [OPTIONAL] Synchronize the `main` branch of your fork with the parent OSP repository if required <br>(see [Syncing a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) in the GitHub documentation for details).
 
 ## Notes
@@ -22,8 +26,8 @@
    * Click the __Run workflow__ button 
    * [OPTIONAL] Adjust the commit message that will appear later in the created pull request<br>(see the [What to do when reports are created](#next-step) section below).
    * Click the green __Run workflow__ button
-     
-        <img width="800" alt="Run workflow dialog showing branch selection and commit message options" src="https://github.com/user-attachments/assets/d787ddc6-db2a-47c0-ab98-82bcb0051bb4" />
+  
+        <img width="700" src="https://github.com/user-attachments/assets/b2c02567-4448-4196-b0bb-1367ab46ecce" />
 
 ## How to create qualification reports
 
