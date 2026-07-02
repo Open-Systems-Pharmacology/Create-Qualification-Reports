@@ -2,12 +2,6 @@
 
 Use this guide when a report-generation workflow fails or produces an unexpected result.
 
-* If a workflow fails in the first step (`check-branch`): start a new workflow run and make sure that the workflow is started from a branch other than `main`.
-
-  <img width="500" src="https://github.com/user-attachments/assets/f8a55fe8-97ad-4caa-99da-c00e57e8ca83" />
-
----
-
 * If [Create evaluation reports and projects](../../actions/workflows/create-evaluation_reports.yml) fails in the `read_inputs` step:
   * Go to the [Validate models.csv](../../actions/workflows/check-models.yml) Workflow
    * Click the __Run workflow__ button 
