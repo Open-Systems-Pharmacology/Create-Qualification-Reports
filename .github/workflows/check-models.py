@@ -54,10 +54,15 @@ class ModelValidator:
                             
     def check_file_in_release(self, repo_name: str, version: str, file_path: str) -> bool:
         """Check if a file exists in a specific release tag or branch"""
-        if re.fullmatch(r"\d+\.\d+", version):
-            url = f"https://api.github.com/repos/Open-Systems-Pharmacology/{repo_name}/contents/{file_path}?ref=v{version}"
+        if repo_name.startswith("../"):
+            repo_path = repo_name[3:]
         else:
-            url = f"https://api.github.com/repos/Open-Systems-Pharmacology/{repo_name}/contents/{file_path}?ref={version}"
+            repo_path = f"Open-Systems-Pharmacology/{repo_name}"
+
+        if re.fullmatch(r"\d+\.\d+", version):
+            url = f"https://api.github.com/repos/{repo_path}/contents/{file_path}?ref=v{version}"
+        else:
+            url = f"https://api.github.com/repos/{repo_path}/contents/{file_path}?ref={version}"
         try:
             response = requests.get(url, headers=self.headers)
             return response.status_code == 200
@@ -69,6 +74,9 @@ class ModelValidator:
         valid = True
         
         for i, row in enumerate(rows, 2):
+            if row.get('Execute', '').strip() != 'TRUE':
+                continue
+
             repo_name = row.get('Repository name', '').strip()
             version = row.get('Released version', '').strip()
             snapshot_name = row.get('Snapshot name', '').strip()
@@ -102,6 +110,9 @@ class ModelValidator:
         valid = True
         
         for i, row in enumerate(rows, 2):
+            if row.get('Execute', '').strip() != 'TRUE':
+                continue
+
             additional_projects = row.get('Additional projects', '').strip()
             if not additional_projects:
                 continue
@@ -155,11 +166,11 @@ class ModelValidator:
     def print_summary(self):
         """Print validation summary"""
         if self.errors:
-            print(f"\n❌ Validation failed with {len(self.errors)} error(s):")
+            print(f"\nValidation failed with {len(self.errors)} error(s):")
             for i, error in enumerate(self.errors, 1):
                 print(f"{i}. {error}")
         else:
-            print("\n✅ All validations passed!")
+            print("\nAll validations passed!")
 
 
 def main():
