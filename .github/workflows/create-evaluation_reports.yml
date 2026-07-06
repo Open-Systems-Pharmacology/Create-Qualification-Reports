@@ -94,7 +94,7 @@ jobs:
           additional-project-urls: ${{ matrix['Additional projects'] }}
           pk-sim-version: ${{ needs.read_inputs.outputs.pk_sim_version }}
           qualification-framework-version: ${{ needs.read_inputs.outputs.qualification_framework_version }}
-          save-model-file: 'true'
+          save-model-file: 'false'
           save-pdf: 'true'
           run-directory: ${{ env.WORKING_DIR }}
 
