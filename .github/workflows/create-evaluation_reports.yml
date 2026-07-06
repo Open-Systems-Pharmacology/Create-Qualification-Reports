@@ -128,7 +128,6 @@ jobs:
         add-paths: |
             */images/**
             */*_report.pdf
-            */*.pksim5
             */*_report.md
         title: Update Evaluation Report for ${{ matrix['Snapshot name'] }}
         body: |
