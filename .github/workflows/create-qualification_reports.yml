@@ -11,7 +11,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  
+
 env:
   WORKING_DIR: 'D:/0'
   GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -28,7 +28,7 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v6
-    
+
     - id: tools_table
       name: Get tools table
       uses: Open-Systems-Pharmacology/Workflows/.github/actions/get-tools-versions@main
@@ -41,7 +41,7 @@ jobs:
       with:
         r-version: 'latest'
         use-public-rspm: true
-        
+
     - name: Read and export qualifications as json
       run: |
         Rscript -e 'install.packages("jsonlite")'
@@ -50,34 +50,34 @@ jobs:
         cat(jsonlite::toJSON(qualificationsData[qualificationsData$Execute, ], dataframe = "rows"))
         ' > qualifications.json
       shell: bash
-    
+
     - name: Output qualifications data for table conversion
       id: qualifications_data
       run: echo "json=$(cat qualifications.json)" >> $GITHUB_OUTPUT
       shell: bash
-      
+
     - name: Markdown table for qualifications
-      uses: buildingcash/json-to-markdown-table-action@v1 
+      uses: buildingcash/json-to-markdown-table-action@v1
       id: qualifications_table
-      with: 
+      with:
         json: "${{ steps.qualifications_data.outputs.json }}"
-        
+
     - name: Set qualifications data as output for matrix run strategy
       id: qualifications
       run: echo "data={\"include\":$(cat qualifications.json)}" >> $GITHUB_OUTPUT
       shell: bash
-  
+
   qualification:
     needs: read_inputs
     strategy:
       matrix: ${{ fromJSON(needs.read_inputs.outputs.qualifications) }}
       fail-fast: false
     runs-on: windows-2022
-    
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v6
-      
+
     - name: Setup Qualification Environment
       uses: ./.github/actions/setup-qualification-environment
 
@@ -101,7 +101,7 @@ jobs:
       name: Copy back to workspace and clean working directory before PR
       run: |
         file.copy(
-          list.files("${{ env.WORKING_DIR }}", full.names = TRUE), 
+          list.files("${{ env.WORKING_DIR }}", full.names = TRUE),
           normalizePath(Sys.getenv("GITHUB_WORKSPACE"), winslash = "/"),
           recursive = TRUE
           )
@@ -117,10 +117,22 @@ jobs:
         # Remove characters that can make a branch name invalid
         sanitized="$(printf '%s' "$REPO_NAME" | tr -d './\\')"
         echo "repo_name=$sanitized" >> "$GITHUB_OUTPUT"
-    
+
+    - name: Upload generated report artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: qualification-report-${{ steps.sanitize.outputs.repo_name }}
+        path: |
+            ${{ matrix['Folder name'] }}/images/**
+            ${{ matrix['Folder name'] }}/report.pdf
+            ${{ matrix['Folder name'] }}/report.md
+        if-no-files-found: warn
+
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v8
+      continue-on-error: true
       with:
+        token: ${{ secrets.CREATE_PR_TOKEN || github.token }}
         branch: ${{ steps.sanitize.outputs.repo_name }}-${{ github.run_number }}
         base: ${{ github.ref_name }}
         commit-message: ${{ inputs.commit-message }}
