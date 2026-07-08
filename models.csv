@@ -1,6 +1,7 @@
 Execute,Repository name,Released version,Snapshot name,Folder name,Workflow name,Additional projects
 FALSE,7E3-Model,1.0,7E3,7E3,,
 TRUE,../SRuedesh/Atomoxetine-Model,evaluation,Atomoxetine-model,Atomoxetine,,
+TRUE,../SRuedesh/Paroxetine-Model,main,Paroxetine-Model,Paroxetine,,
 TRUE,../SRuedesh/Risperidone-Model,evaluation,Risperidone-model,Risperidone,,
 TRUE,../SRuedesh/Desipramine-Model,evaluation,Desipramine-Model,Desipramine,,
 TRUE,../SRuedesh/Quinidine-Model,evaluation,Quinidine-Model,Quinidine,,
